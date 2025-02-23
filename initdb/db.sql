@@ -6,18 +6,18 @@ CREATE SCHEMA api;
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE IF NOT EXISTS api.User (
-    user_id DEFAULT uuid_generate_v4() PRIMARY KEY,
+    user_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     name TEXT NOT NULL,
     address TEXT NOT NULL,
     created_at TIMESTAMPTZ   NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ   NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE IF NOT EXISTS api.Subject(
-    subject_id  DEFAULT uuid_generate_v4() PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS api.Subject (
+    subject_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     label TEXT NOT NULL,
     description TEXT,
-    average FLOAT CHECK (average >= 0)?
+    average FLOAT CHECK (average >= 0),
     created_at TIMESTAMPTZ   NOT NULL DEFAULT NOW(),
     user_id UUID REFERENCES api.User(user_id) ON DELETE CASCADE
 );
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS api.Subject(
 CREATE ROLE api_user nologin;
 CREATE ROLE api_anon nologin;
 
-CREATE ROLE authenticator WITH NOINHERIT LOGIN PASSWORD 'postgrestapitesting';
+CREATE ROLE authenticator WITH NOINHERIT LOGIN PASSWORD '8Fny?aXEFkh9ePA3';
 
 GRANT api_user TO authenticator;
 GRANT api_anon TO authenticator;
@@ -59,3 +59,21 @@ EXECUTE FUNCTION api.update_updated_at_column();
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA api GRANT EXECUTE ON FUNCTIONS TO api_user;
 ALTER DEFAULT PRIVILEGES IN SCHEMA api GRANT TRIGGER ON TABLES TO api_user;
+
+
+-- Insert  data in db with random data
+INSERT INTO api.User (name, address)
+VALUES
+    ('John Doe', '123 Main St'),
+    ('Jane Smith', '456 Elm St'),
+    ('Alice Johnson', '789 Oak St'),
+    ('Bob Brown', '321 Pine St'),
+    ('Charlie Davis', '654 Maple St');
+
+INSERT INTO api.Subject (label, description, average, user_id)
+VALUES
+    ('Mathematics', 'Study of numbers and formulas', 85.5, (SELECT user_id FROM api.User WHERE name = 'John Doe')),
+    ('History', 'Study of past events', 70.0, (SELECT user_id FROM api.User WHERE name = 'John Doe')),
+    ('Science', 'Study of the natural world', 90.0, (SELECT user_id FROM api.User WHERE name = 'Jane Smith')),
+    ('Literature', 'Study of written works', 80.0, (SELECT user_id FROM api.User WHERE name = 'Alice Johnson')),
+    ('Art', 'Study of creative expression', 95.0, (SELECT user_id FROM api.User WHERE name = 'Bob Brown'));
