@@ -18,6 +18,25 @@ services:
       networks:
         - my-demo-network
 
+    server:
+      image: postgrest/postgrest:v12.2.8
+      container_name: pgrest-server
+      ports:
+        - "3000:3000"
+      expose:
+        - "3000"
+      links:
+        - db:db
+      environment:
+        - PGRST_DB_URI=postgres://authenticator:8Fny?aXEFkh9ePA3@db:5432/postgres_db
+        - PGRST_DB_SCHEMA=api
+        - PGRST_DB_ANON_ROLE=api_anon      
+      depends_on:
+        - db
+      networks:
+        - my-demo-network
+      restart: unless-stopped
+
 volumes:
   postgres-data:
 

@@ -72,8 +72,8 @@ VALUES
 
 INSERT INTO api.Subject (label, description, average, user_id)
 VALUES
-    ('Mathematics', 'Study of numbers and formulas', 85.5, (SELECT user_id FROM api.User WHERE name = 'John Doe')),
-    ('History', 'Study of past events', 70.0, (SELECT user_id FROM api.User WHERE name = 'John Doe')),
-    ('Science', 'Study of the natural world', 90.0, (SELECT user_id FROM api.User WHERE name = 'Jane Smith')),
-    ('Literature', 'Study of written works', 80.0, (SELECT user_id FROM api.User WHERE name = 'Alice Johnson')),
-    ('Art', 'Study of creative expression', 95.0, (SELECT user_id FROM api.User WHERE name = 'Bob Brown'));
+    ('Mathematics', 'Study of numbers and formulas', 85.5, (SELECT user_id FROM api.User WHERE name = 'John Doe' LIMIT 1)),
+    ('History', 'Study of past events', 70.0, (SELECT user_id FROM api.User WHERE name = 'John Doe' LIMIT 1)),
+    ('Science', 'Study of the natural world', 90.0, (SELECT user_id FROM api.User WHERE name = 'Jane Smith' LIMIT 1)),
+    ('Literature', 'Study of written works', 80.0, (SELECT user_id FROM api.User WHERE name = 'Alice Johnson' LIMIT 1)),
+    ('Art', 'Study of creative expression', 95.0, (SELECT user_id FROM api.User WHERE name = 'Bob Brown' LIMIT 1));
