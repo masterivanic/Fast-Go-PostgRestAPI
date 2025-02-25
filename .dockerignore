@@ -1,0 +1,6 @@
+initdb
+.git
+.vscode
+Dockerfile
+Readme.md
+postgres-data
