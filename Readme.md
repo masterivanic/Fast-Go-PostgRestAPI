@@ -1,4 +1,4 @@
-# PostgREST API Demo
+# Fast & GO PostgRest API
 
 This project demonstrates how to set up a RESTful API using **PostgREST** with a PostgreSQL database. The API allows you to manage `Users` and `Subjects` stored in the database.
 
