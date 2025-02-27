@@ -61,6 +61,12 @@ Before running the project, ensure you have the following installed:
    docker logs pgrest-db-container
    ```
 
+4. **Check DB logs**:
+   Verify db logging config work as weel
+    ```bash
+   docker logs pgrest-db-container 
+   ```
+
 ---
 
 ## Database Schema
