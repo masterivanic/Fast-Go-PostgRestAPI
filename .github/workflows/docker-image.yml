@@ -23,7 +23,7 @@ jobs:
 
     - name: Wait for services to be ready
       run: |
-        docker-compose ps
+        docker compose ps
         sleep 20
 
     - name: Check if PostgREST is running
