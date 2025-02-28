@@ -48,8 +48,35 @@ services:
       environment:
         API_URL: http://localhost:3000/
 
+    prometheus:
+      image: prom/prometheus:v2.45.0
+      container_name: prometheus
+      volumes:
+        - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      command:
+        - '--config.file=/etc/prometheus/prometheus.yml'
+      ports:
+        - "9090:9090"
+      networks:
+        - my-demo-network
+
+    grafana:
+      image: grafana/grafana:10.1.0
+      container_name: grafana
+      ports:
+        - "3001:3000"
+      volumes:
+        - grafana-data:/var/lib/grafana
+      environment:
+        - GF_SECURITY_ADMIN_PASSWORD=logarithme123
+      depends_on:
+        - prometheus
+      networks:
+        - my-demo-network
+
 volumes:
   postgres-data:
+  grafana-data:
 
 networks:
   my-demo-network:
