@@ -18,8 +18,8 @@ jobs:
 
     - name: Build and start services
       run: |
-        docker-compose build
-        docker-compose up -d
+        docker compose build
+        docker compose up -d
 
     - name: Wait for services to be ready
       run: |
@@ -36,11 +36,11 @@ jobs:
 
     - name: Check logs for any errors
       if: failure()
-      run: docker-compose logs
+      run: docker compose logs
 
     - name: Stop services
       if: always()
-      run: docker-compose down
+      run: docker compose down
 
     - name: Push images to registry
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
