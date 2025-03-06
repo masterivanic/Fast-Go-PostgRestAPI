@@ -112,6 +112,11 @@ PostgREST automatically generates RESTful endpoints based on the database schema
 
 ## Running the Project
 
+0. **Create env file**:
+   ```bash
+   cp .env-example .env
+   ```
+
 1. **Start the Services**:
    ```bash
    docker-compose up -d

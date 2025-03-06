@@ -3,10 +3,6 @@ set -e
 
 source .env
 
-echo "postges db is: ${POSTGRES_DB}"
-echo "postges db user is: ${POSTGRES_USER}"
-echo "postges db pass is: ${POSTGRES_PASSWORD}"
-
 echo "db initialization...🚀"
 echo "log_statement = 'all'" >> /var/lib/postgresql/data/postgresql.conf # enable postgres logging
 echo "db:5432:${POSTGRES_DB}:${POSTGRES_USER}:${POSTGRES_PASSWORD}" > ~/.pgpass

@@ -18,6 +18,7 @@ jobs:
 
     - name: Build and start services
       run: |
+        mv .env-example .env
         docker compose build
         docker compose up -d
 
