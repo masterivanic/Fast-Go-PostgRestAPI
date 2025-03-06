@@ -4,3 +4,4 @@ initdb
 Dockerfile
 Readme.md
 postgres-data
+.env
