@@ -1,9 +1,9 @@
 # postgrest.conf
-db-uri = "postgres://authenticator:8Fny?aXEFkh9ePA3@db:5432/postgres_db"
+db-uri = "postgres://authenticator:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}"
 db-aggregates-enabled = false
 db-schema = "api"
 db-anon-role = "api_anon"
-jwt-secret = "cLokskozG6r0Ajuz9rg4rtD3awgGj2vr"
+jwt-secret = "${JWT_SECRET}"
 server-host = "0.0.0.0"
 server-port = 3000
 log-level = "error"
