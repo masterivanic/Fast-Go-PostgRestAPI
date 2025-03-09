@@ -147,6 +147,7 @@ PostgREST automatically generates RESTful endpoints based on the database schema
 2. **Create a New User**:
    ```bash
    curl -i -X POST http://localhost:3000/user \
+       -H "Authorization: Bearer token_generate_on_jwt_io_using_your_jwt_secret" \
        -H "Content-Type: application/json" \
        -d '{"name": "John Doe", "address": "123 Main St"}'
    ```
@@ -159,10 +160,20 @@ PostgREST automatically generates RESTful endpoints based on the database schema
 4. **Create a New Subject**:
    ```bash
    curl -i -X POST http://localhost:3000/subject \
+       -H "Authorization: Bearer token_generate_on_jwt_io_using_your_jwt_secret" \
        -H "Content-Type: application/json" \
        -d '{"label": "Mathematics", "description": "Study of numbers", "average": 85.5, "user_id": "123e4567-e89b-12d3-a456-426614174000"}'
    ```
 
+5. **Check postgRest server config is same as you define**
+   ```bash
+   curl "http://localhost:3001/config" | jq '.'
+   ```
+
+6. **Print runtime schema cache**
+   ```bash
+   curl "http://localhost:3001/schema_cache"
+   ```
 ---
 
 ## Troubleshooting

@@ -3,13 +3,21 @@ db-uri = "postgres://authenticator:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}"
 db-aggregates-enabled = false
 db-schema = "api"
 db-anon-role = "api_anon"
+db-max-rows = ${DB_MAX_ROWS}
 jwt-secret = "${JWT_SECRET}"
+
 server-host = "0.0.0.0"
 server-port = 3000
+
+# ---------------------------------- logging configuration ----------------------------------
 log-level = "error"
-admin-server-port = 3001
-db-pool-automatic-recovery = true # reconnecting to the database if connection loss happens.
 log_directory = "pg_log" # save logs in pg_log/ under the pg data directory
 log_filename = "postgresql-%Y-%m-%d.log"
-openapi_server_proxy_uri = "http://localhost:3000"
+
+admin-server-port = 3001
+
+db-pool-automatic-recovery = true # reconnecting to the database if connection loss happens.
+db-pool = ${DB_CONN_POOL}
+
+openapi-server-proxy-uri = "http://localhost:3000"
 # jwt-secret = "{ \"alg\":\"RS256\", … }" enable Symmetric Keys using JSON Web Key (JWK)
