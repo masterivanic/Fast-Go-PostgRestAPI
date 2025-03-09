@@ -210,6 +210,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [PostgREST](https://postgrest.org/) for providing the REST API layer.
 - [PostgreSQL](https://www.postgresql.org/) for the powerful database backend.
 - [Docker](https://www.docker.com/) for containerization.
+- [Prometheus.exporter.postgres](https://grafana.com/docs/alloy/latest/reference/components/prometheus/prometheus.exporter.postgres/) - for collecting metrics from a PostgreSQL database.
+- [postgres-expoter-grafana](https://grafana.com/oss/prometheus/exporters/postgres-exporter/) - docs for postgres grafana dashboard
 
 ---
 

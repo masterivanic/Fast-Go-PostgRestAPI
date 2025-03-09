@@ -8,10 +8,18 @@ rule_files:
   # - "second.rules"
 
 scrape_configs:
-  - job_name: 'postgres'
-    static_configs:
-      - targets: ['db:5432']
+  # - job_name: 'postgres'
+  #   static_configs:
+  #     - targets: ['db:5432']
 
   - job_name: 'postgrest'
     static_configs:
       - targets: ['server:3000']
+
+  - job_name: prometheus
+    static_configs:
+      - targets: ['localhost:9091']
+
+  - job_name: postgresql
+    static_configs:
+      - targets: ['postgresql-exporter:9187']
