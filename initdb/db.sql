@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS api.Subject (
 CREATE ROLE api_user nologin;
 CREATE ROLE api_anon nologin;
 
-CREATE ROLE authenticator WITH NOINHERIT LOGIN PASSWORD '8Fny?aXEFkh9ePA3';
+CREATE ROLE authenticator WITH NOINHERIT LOGIN PASSWORD '8Fny3FaXEFkh9ePA3';
 
 GRANT api_user TO authenticator;
 GRANT api_anon TO authenticator;

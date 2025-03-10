@@ -15,6 +15,21 @@ ps: ## show running containers
 	sudo docker ps
 	@echo ""
 
+pause: ## pause all containers
+	@echo ""
+	sudo docker compose pause
+	@echo ""
+
+unpause: ## unpause all containers
+	@echo ""
+	sudo docker compose unpause
+	@echo ""
+
+logs-stream: ## stream live logs
+	@echo ""
+	sudo docker compose logs --follow
+	@echo ""
+
 ps-a: ## show all containers whether there're running or not
 	@echo ""
 	docker ps -a
@@ -22,13 +37,29 @@ ps-a: ## show all containers whether there're running or not
 
 down: ## stop containers
 	@echo "stopping containers:"
-	docker compose down
+	sudo docker compose stop
+	@echo "done!"
+
+remove: ## remove stop containers
+	@echo "stopping containers:"
+	sudo docker compose rm
 	@echo "done!"
 
 down-volumes: ## stop containers & remove volumes
 	@echo "stopping containers & volumes:"
 	docker compose down --volumes
 	@echo "done!"
+
+stats: ## show containers resource usage, full and untrimmed
+	@echo ""
+	docker compose stats --no-trunc
+	@echo ""
+
+restart: ## restart containers
+	@echo "stopping containers:"
+	docker compose restart
+	@echo "done!"
+
 
 help:
 	@echo "usage: make [command]"
