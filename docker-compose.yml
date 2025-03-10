@@ -21,6 +21,10 @@ services:
         - "./initdb:/docker-entrypoint-initdb.d"
       networks:
         - my-demo-network
+      deploy:
+        resources:
+          limits:
+            memory: 200M
 
     server:
       build:
@@ -48,6 +52,10 @@ services:
       networks:
         - my-demo-network
       restart: unless-stopped
+      deploy:
+        resources:
+          limits:
+            memory: 200M
 
     swagger:
       image: swaggerapi/swagger-ui:v5.18.1
@@ -58,6 +66,10 @@ services:
         - "8080"
       environment:
         API_URL: http://localhost:3000/
+      deploy:
+        resources:
+          limits:
+            memory: 20M
 
     prometheus:
       image: prom/prometheus:v2.45.0
@@ -75,6 +87,10 @@ services:
         - "9091:9091"
       networks:
         - my-demo-network
+      deploy:
+        resources:
+          limits:
+            memory: 200M
 
     grafana:
       image: grafana/grafana:10.1.0
@@ -91,6 +107,10 @@ services:
         - prometheus
       networks:
         - my-demo-network
+      deploy:
+        resources:
+          limits:
+            memory: 200M
 
     postgresql-exporter:
       image: prometheuscommunity/postgres-exporter
@@ -107,6 +127,10 @@ services:
       restart: unless-stopped
       networks:
         - my-demo-network
+      deploy:
+        resources:
+          limits:
+            memory: 200M
 
 volumes:
   postgres-data:
