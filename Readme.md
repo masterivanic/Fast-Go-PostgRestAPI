@@ -205,6 +205,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
+## Grafana dashbord of Postregsql && PostgRest server 
+![Alt text](/captures/grafana-dashboard.png?raw=true "Postgresql & server dashboard")
+
 ## Acknowledgments
 
 - [PostgREST](https://postgrest.org/) for providing the REST API layer.
